@@ -10,16 +10,16 @@ public class TransactionResponseDTO {
     private String message;
     private Object data;
 
-    public static BankAccountResponseDTO buildSuccess(String message, Object data) {
-        return BankAccountResponseDTO.builder()
+    public static TransactionResponseDTO buildSuccess(String message, Object data) {
+        return TransactionResponseDTO.builder()
                 .success(true)
                 .message(message)
                 .data(data)
                 .build();
     }
 
-    public static BankAccountResponseDTO buildError(String message) {
-        return BankAccountResponseDTO.builder()
+    public static TransactionResponseDTO buildError(String message) {
+        return TransactionResponseDTO.builder()
                 .success(false)
                 .message(message)
                 .data(null)

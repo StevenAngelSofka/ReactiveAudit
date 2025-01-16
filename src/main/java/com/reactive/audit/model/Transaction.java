@@ -14,6 +14,7 @@ public class Transaction {
     @Id
     private UUID id = UUID.randomUUID();
     private UUID accountId;
+    private String numberAccount;
     private String type;
     private double amount;
     private double previousBalance;
