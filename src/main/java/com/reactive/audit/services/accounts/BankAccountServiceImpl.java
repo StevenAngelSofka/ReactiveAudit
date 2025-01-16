@@ -32,7 +32,8 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Override
     public Flux<Double> streamBalanceByAccountNumber(String numberAccount) {
         return transactionReactiveRepository.findWithTailableCursorByNumberAccount(numberAccount)
-                .map(Transaction::getCurrentBalance);
+                .map(Transaction::getCurrentBalance)
+                .switchIfEmpty(Flux.error(new RuntimeException("No transactions found for account " + numberAccount)));
     }
 
 //    @Override
@@ -162,4 +163,6 @@ public class BankAccountServiceImpl implements BankAccountService {
                 .thenReturn(BankAccountResponseDTO.buildSuccess(
                         "Transaction type: " + type + ". Amount: " + amount + " . Current Balance: " + newBalance, savedAccount));
     }
+
+
 }
