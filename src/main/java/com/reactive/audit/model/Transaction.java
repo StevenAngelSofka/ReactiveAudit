@@ -1,6 +1,8 @@
 package com.reactive.audit.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +11,8 @@ import java.util.UUID;
 
 @Data
 @Document(collection = "transactions")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Transaction {
 
     @Id
@@ -20,4 +24,5 @@ public class Transaction {
     private double previousBalance;
     private double currentBalance;
     private LocalDateTime transactionDate;
+
 }
