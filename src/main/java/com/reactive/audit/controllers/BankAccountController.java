@@ -2,7 +2,6 @@ package com.reactive.audit.controllers;
 
 import com.reactive.audit.DTO.req.BankAccountRequestDTO;
 import com.reactive.audit.DTO.res.BankAccountResponseDTO;
-import com.reactive.audit.model.BankAccount;
 import com.reactive.audit.services.accounts.BankAccountService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -55,7 +54,7 @@ public class BankAccountController {
         return bankAccountService.updateAccount(accountId, requestDTO)
                 .map(response -> response.isSuccess()
                         ? ResponseEntity.ok(response)
-                        : ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response));
+                        : ResponseEntity.status(HttpStatus.NOT_FOUND).body(response));
     }
 
     @DeleteMapping("/delete/{accountId}")
